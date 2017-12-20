@@ -1,0 +1,5 @@
+#! /bin/sh
+kill -10 `ps -a | grep $1 | cut -d' ' -f 1 `
+
+# on target: 
+# kill -10 `ps | grep evse | cut -d' ' -f 3`

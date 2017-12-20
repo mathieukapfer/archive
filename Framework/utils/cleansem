@@ -1,0 +1,2 @@
+for id in `ipcs |  cut -d ' ' -f 2 ` ; do ipcrm -s$id; done
+

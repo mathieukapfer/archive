@@ -1,0 +1,20 @@
+CXX= c++
+CC= $(CXX)
+
+CXXFLAGS = -g
+
+all: test
+	./test
+
+test : TraceDebug.o test.o
+
+clean:
+	-rm -f *.o
+
+clean_:
+	-rm -f *~
+	-rm -f TAGS
+	-rm -f test
+
+tags:
+	etags -l c++ *.h *.cpp

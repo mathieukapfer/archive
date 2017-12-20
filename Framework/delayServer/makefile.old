@@ -1,0 +1,22 @@
+CXXFLAGS = -g -pthread
+
+.PHONY: test
+
+all: TimerTest DelayServerTest test
+
+TimerTest:       TimerInfoList.cpp TimerTest.cpp 
+DelayServerTest: TimerInfoList.cpp DelayServer.cpp DelayServer.h DelayServerTest.cpp
+
+test:test2
+
+test1:
+	./TimerTest
+
+test2:
+	./DelayServerTest
+
+clean:
+	rm TimerTest DelayServerTest 
+
+TAGS:
+	etags -l c++ *.h *.cpp

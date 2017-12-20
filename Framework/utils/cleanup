@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "Remove global sem file key"
+rm -rf /tmp/Sem
+
+echo "> Clean with ipcrm !"
+IPCS=`ipcs | cut -d " " -f 2`
+param=""
+
+for id in $IPCS; do
+    if  [ $id == "Semaphore" ] || [ $id == "Tableaux" ] 
+   	then 
+   	    param="-s"
+   	else
+      if  [ $id == "Message" ] || [ $id == "Files" ] || [ $id == "Queues" ]
+     	then 
+     	    param=""
+     	else
+     	    if [ "$param" != "" ]
+     	    then
+          	    echo ipcs $param $id
+                ipcrm $param $id;
+     	    fi
+      fi
+    fi
+
+done
+
